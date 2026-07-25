@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}All Applications | Job Tracker{% endblock %}
+
+{% block content %}
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h1>All Applications</h1>
+        <a href="{% url 'job_create' %}" class="btn btn-success">+ Add Application</a>
+    </div>
+
+    <table class="table table-striped table-bordered bg-white">
+        <thead class="table-dark">
+            <tr>
+                <th>Company</th>
+                <th>Position</th>
+                <th>Location</th>
+                <th>Status</th>
+                <th>Application Date</th>
+                <th>Deadline</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for app in applications %}
+                <tr>
+                    <td>{{ app.company_name }}</td>
+                    <td>{{ app.position }}</td>
+                    <td>{{ app.job_location }}</td>
+                    <td><span class="badge bg-secondary">{{ app.get_status_display }}</span></td>
+                    <td>{{ app.application_date }}</td>
+                    <td>{{ app.deadline }}</td>
+                    <td>
+                        <a href="{% url 'job_detail' app.pk %}" class="btn btn-sm btn-info">View</a>
+                        <a href="{% url 'job_update' app.pk %}" class="btn btn-sm btn-warning">Edit</a>
+                        <a href="{% url 'job_delete' app.pk %}" class="btn btn-sm btn-danger">Delete</a>
+                    </td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="7" class="text-center text-muted">No job applications yet.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

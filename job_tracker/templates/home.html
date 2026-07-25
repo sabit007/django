@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}Home | Job Tracker{% endblock %}
+
+{% block content %}
+    <h1 class="mb-4">Job Application Tracker</h1>
+
+    <div class="row mb-4">
+        <div class="col-md-4">
+            <div class="card text-white bg-primary mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Total Applications</h5>
+                    <p class="display-6">{{ total }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row row-cols-1 row-cols-md-3 g-3">
+        {% for item in status_counts %}
+            <div class="col">
+                <div class="card">
+                    <div class="card-body">
+                        <h6 class="card-title text-muted">{{ item.label }}</h6>
+                        <p class="fs-3 fw-bold mb-0">{{ item.count }}</p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <a href="{% url 'job_list' %}" class="btn btn-primary mt-4">View All Applications</a>
+{% endblock %}

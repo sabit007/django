@@ -1,27 +1,33 @@
 # Virtual environment
-venv/
-env/
-.venv/
+
+job_tracker/venv/
+job_tracker/env/
+job_tracker/.venv/
 
 # Python
-__pycache__/
-*.py[cod]
-*$py.class
+
+**pycache**/
+_.py[cod]
+_$py.class
 
 # Django
-db.sqlite3
-db.sqlite3-journal
-*.log
+
+job_tracker/db.sqlite3
+job_tracker/db.sqlite3-journal
+\*.log
 media/
 
 # Environment variables / secrets
-.env
+
+job_tracker/.env
 
 # Editor / OS
+
 .vscode/
 .idea/
 .DS_Store
 Thumbs.db
 
 # Static files (only if you collectstatic to a separate folder)
+
 staticfiles/

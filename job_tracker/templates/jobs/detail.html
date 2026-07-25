@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}{{ application.company_name }} | Job Tracker{% endblock %}
+
+{% block content %}
+    <div class="bg-white p-4 rounded shadow-sm">
+        <h1 class="mb-3">{{ application.position }} at {{ application.company_name }}</h1>
+
+        <table class="table">
+            <tr><th>Location</th><td>{{ application.job_location }}</td></tr>
+            <tr><th>Salary</th><td>{% if application.salary %}${{ application.salary }}{% else %}Not specified{% endif %}</td></tr>
+            <tr><th>Status</th><td><span class="badge bg-secondary">{{ application.get_status_display }}</span></td></tr>
+            <tr><th>Application Date</th><td>{{ application.application_date }}</td></tr>
+            <tr><th>Deadline</th><td>{{ application.deadline }}</td></tr>
+            <tr><th>Notes</th><td>{{ application.notes|default:"—" }}</td></tr>
+            <tr><th>Created At</th><td>{{ application.created_at }}</td></tr>
+            <tr><th>Updated At</th><td>{{ application.updated_at }}</td></tr>
+        </table>
+
+        <a href="{% url 'job_update' application.pk %}" class="btn btn-warning">Edit</a>
+        <a href="{% url 'job_delete' application.pk %}" class="btn btn-danger">Delete</a>
+        <a href="{% url 'job_list' %}" class="btn btn-secondary">Back to List</a>
+    </div>
+{% endblock %}
