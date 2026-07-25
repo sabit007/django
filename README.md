@@ -1,2 +1,1 @@
-# sabit007.github.io
-My first blog
+First Project using the Django framework. Just testing things out and getting a feel for it.
